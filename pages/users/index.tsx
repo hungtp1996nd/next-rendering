@@ -1,5 +1,7 @@
 import { sql } from "@vercel/postgres"
+import Footer from "components/layouts/Footer";
 import { useRouter } from "next/router";
+import { ReactNode } from "react";
 
 export default function Users({ users }: any) {
     const router = useRouter();
@@ -21,3 +23,11 @@ export async function getServerSideProps() {
     }
 }
 
+Users.getLayout = function(page: ReactNode) {
+    return (
+        <>
+            {page}
+            <Footer />
+        </>
+    )
+}
